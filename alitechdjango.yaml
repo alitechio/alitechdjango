@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: alitechdjango
+  labels:
+    app: alitechdjango
+spec:
+  ports:
+    - port: 8000
+  selector:
+    app: alitechdjango
+    tier: frontend
+  type: NodePort
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: alitechdjango-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /home/ubuntu/alitechdjango/public/storage
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - appplatform
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alitechdjango-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: alitechdjango
+  labels:
+    app: alitechdjango
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alitechdjango
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: alitechdjango
+        tier: frontend
+    spec:
+      containers:
+      - image: hostingbyalitech/alitechdjango:latest
+        name: alitechdjango
+        ports:
+        - containerPort: 8000
+          name: alitechdjango
+        volumeMounts:
+        - name: alitechdjango-persistent-storage
+          mountPath: /storage
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+      - name: alitechdjango-persistent-storage
+        persistentVolumeClaim:
+          claimName: alitechdjango-pv-claim
