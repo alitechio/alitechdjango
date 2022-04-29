@@ -1,6 +1,6 @@
 # djangoalitech
 
-Testing out django with docker.
+Testing out django, docker and kubernetes.
 
 IMPORTANT : This is preliminary release and not the final release.
 
