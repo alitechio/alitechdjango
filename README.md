@@ -44,7 +44,7 @@ TODO -
 
 ## Find Us
 
-* [GitHub](https://github.com/your/repository)
+* [GitHub](https://github.com/alitechio/alitechdjango/)
 * [AliTech](https://alitech.io)
 * [HostingbyAliTech](https://www.hostingbyalitech.com)
 
