@@ -4,7 +4,8 @@ Testing out django with docker.
 
 IMPORTANT : This is preliminary release and not the final release.
 
-![django](https://user-images.githubusercontent.com/103392191/165945083-4fb0f581-fdfa-4a15-b452-ffaf4683c033.png)
+![django](https://user-images.githubusercontent.com/103392191/165945341-e225bf23-4da0-4b89-b749-80647fc73a52.png)
+
 
 ## Getting Started
 
