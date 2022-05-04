@@ -2,7 +2,7 @@
 
 Testing out django, docker and kubernetes.
 
-IMPORTANT : This is preliminary release and not the final release.
+IMPORTANT : This is preliminary release do not use in production.
 
 ![django](https://user-images.githubusercontent.com/103392191/165945341-e225bf23-4da0-4b89-b749-80647fc73a52.png)
 
